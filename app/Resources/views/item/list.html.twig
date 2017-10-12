@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <div class="container">
+        {% for item in collections %}
+            {{ item.collection }}
+         {% endfor %}
+        <table class="table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>TITRE</th>
+                <th>DESCRIPTION</th>
+                <th>CODE</th>
+                <th>COLLECTION</th>
+                <th></th>
+            </tr>
+           {% for item in items %}
+                   <tr>
+                       <td>{{ item.id }}</td>
+                       <td>{{ item.title }}</td>
+                       <td>{{ item.description }}</td>
+                       <td>{{ item.code }}</td>
+                       <td>{{ item.collection }}</td>
+                       <td ><a href=" {{ path('oneItem', {'id': item.id}) }}"><i class="fa fa-eye btn btn-success"></i></a></td>
+                       <td ><a href=" {{ path('removeItem', {'id': item.id}) }}"><i class="fa fa-trash btn btn-danger"></i></a></td>
+                   </tr>
+
+           {% endfor %}
+        </table>
+    </div>
+{% endblock %}
